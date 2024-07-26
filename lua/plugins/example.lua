@@ -28,7 +28,7 @@ return {
   },
 
   -- disable trouble
-  { "folke/trouble.nvim",      enabled = false },
+  { "folke/trouble.nvim", enabled = false },
 
   -- add symbols-outline
   {
@@ -181,6 +181,36 @@ return {
     end,
   },
 
+  {
+    "akinsho/bufferline.nvim",
+    config = function()
+      require("bufferline").setup({
+        highlights = {
+          background = {
+            guibg = "NONE",
+          },
+          fill = {
+            guibg = "NONE",
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    opts = function()
+      return {
+        -- Other NeoTree settings...
+        window = {
+          -- Other window settings...
+          blend = 50, -- Adjust the transparency level (0-100)
+        },
+      }
+    end,
+  },
+
   -- or you can return new options to override all the defaults
   {
     "nvim-lualine/lualine.nvim",
@@ -188,6 +218,21 @@ return {
     opts = function()
       return {
         --[[add your custom lualine config here]]
+        options = {
+          theme = "auto", -- Tema yang digunakan
+          component_separators = "",
+          section_separators = "",
+          globalstatus = true,
+          disabled_filetypes = { "NvimTree", "vista_kind", "dbui", "packer", "lspinfo" }, -- menonaktifkan Lualine untuk tipe file tertentu
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_c = { "filename" },
+          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
       }
     end,
   },
