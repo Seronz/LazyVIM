@@ -1,6 +1,6 @@
 return {
   {
-    "mfussengger/nvim-jdtls",
+    "mfussenegger/nvim-jdtls",
     config = function()
       local jdtls = require("jdtls")
 
